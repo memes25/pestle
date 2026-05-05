@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PESTLE Analysis — UK Business</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Figtree', -apple-system, sans-serif;
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background: #060608;
+  overflow: hidden;
+}
+
+.bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.45;
+  animation: drift linear infinite;
+}
+
+.bg-orb-1 {
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, #3d2fa0, transparent 70%);
+  top: -200px; left: -150px;
+  animation-duration: 28s;
+}
+.bg-orb-2 {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, #0a4fa6, transparent 70%);
+  top: 20%; right: -100px;
+  animation-duration: 22s;
+  animation-delay: -8s;
+}
+.bg-orb-3 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, #1a7a3a, transparent 70%);
+  bottom: 5%; left: 20%;
+  animation-duration: 32s;
+  animation-delay: -15s;
+}
+.bg-orb-4 {
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, #7a1a4a, transparent 70%);
+  bottom: 20%; right: 10%;
+  animation-duration: 26s;
+  animation-delay: -4s;
+}
+
+@keyframes drift {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(40px, -30px) scale(1.05); }
+  66%  { transform: translate(-20px, 40px) scale(0.97); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 80px 24px 100px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 72px;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-size: clamp(42px, 6vw, 72px);
+  font-weight: 300;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  background: linear-gradient(160deg, #fff 30%, rgba(255,255,255,0.45));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.45);
+  max-width: 440px;
+  margin: 0 auto;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+@media (max-width: 800px) { .grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 520px) { .grid { grid-template-columns: 1fr; } }
+
+.card {
+  position: relative;
+  border-radius: 24px;
+  padding: 26px 24px 28px;
+  background: rgba(255,255,255,0.055);
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  border: 1px solid rgba(255,255,255,0.1);
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(.25,.8,.25,1), background 0.3s ease, border-color 0.3s ease;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.005);
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.18);
+}
+
+.card-shine {
+  position: absolute;
+  top: 0; left: 16px; right: 16px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 22px;
+}
+
+.badge {
+  width: 38px; height: 38px;
+  border-radius: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+.card-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.92);
+  letter-spacing: -0.02em;
+}
+.card-sub {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.03em;
+  margin-top: 2px;
+}
+
+.factors { list-style: none; display: flex; flex-direction: column; gap: 0; }
+
+.factor { padding: 13px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+.factor:last-child { border-bottom: none; padding-bottom: 0; }
+.factor:first-child { padding-top: 0; }
+
+.factor-name {
+  font-size: 12.5px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+.factor-desc {
+  font-size: 11.5px;
+  color: rgba(255,255,255,0.38);
+  line-height: 1.55;
+  font-weight: 400;
+}
+
+.card-p .badge { background: rgba(88,86,214,0.25); color: #a89ef5; }
+.card-e .badge { background: rgba(52,199,89,0.2); color: #5de087; }
+.card-s .badge { background: rgba(255,159,10,0.2); color: #ffbf52; }
+.card-t .badge { background: rgba(0,122,255,0.2); color: #5aadff; }
+.card-l .badge { background: rgba(255,59,48,0.2); color: #ff7b73; }
+.card-env .badge { background: rgba(48,209,88,0.2); color: #52e87a; }
+
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.2);
+  text-transform: uppercase;
+}
+</style>
+</head>
+<body>
+
+<div class="bg">
+  <div class="bg-orb bg-orb-1"></div>
+  <div class="bg-orb bg-orb-2"></div>
+  <div class="bg-orb bg-orb-3"></div>
+  <div class="bg-orb bg-orb-4"></div>
+</div>
+
+<div class="page">
+
+  <header>
+    <p class="eyebrow">Business Analysis Framework</p>
+    <h1>PESTLE Analysis</h1>
+    <p class="subtitle">Key external factors affecting UK businesses — applicable across all sectors.</p>
+  </header>
+
+  <div class="grid">
+
+    <div class="card card-p">
+      <div class="card-shine"></div>
+      <div class="card-header">
+        <div class="badge">P</div>
+        <div>
+          <div class="card-title">Political</div>
+          <div class="card-sub">Government &amp; policy</div>
+        </div>
+      </div>
+      <ul class="factors">
+        <li class="factor"><div class="factor-name">Post-Brexit trade rules</div><div class="factor-desc">New customs checks and import/export costs push up prices and complicate supply chains.</div></li>
+        <li class="factor"><div class="factor-name">Government spending cuts</div><div class="factor-desc">Austerity policies reduce public sector contracts and consumer confidence.</div></li>
+        <li class="factor"><div class="factor-name">National Living Wage rises</div><div class="factor-desc">Government-mandated annual increases directly raise labour costs for all employers.</div></li>
+        <li class="factor"><div class="factor-name">Corporation tax at 25%</div><div class="factor-desc">Raised in 2023, reducing post-tax profits for businesses of all sizes.</div></li>
+      </ul>
+    </div>
+
+    <div class="card card-e">
+      <div class="card-shine"></div>
+      <div class="card-header">
+        <div class="badge">E</div>
+        <div>
+          <div class="card-title">Economic</div>
+          <div class="card-sub">Macro &amp; market conditions</div>
+        </div>
+      </div>
+      <ul class="factors">
+        <li class="factor"><div class="factor-name">High UK inflation (CPI)</div><div class="factor-desc">Drove up costs of materials, energy and wages significantly since 2022.</div></li>
+        <li class="factor"><div class="factor-name">Bank of England interest rates</div><div class="factor-desc">Higher rates increase borrowing costs, discouraging investment and expansion.</div></li>
+        <li class="factor"><div class="factor-name">Cost of living crisis</div><div class="factor-desc">Squeezed consumer disposable income reduces demand for non-essential goods and services.</div></li>
+        <li class="factor"><div class="factor-name">Weak pound sterling</div><div class="factor-desc">Makes imports more expensive, raising costs for businesses sourcing from abroad.</div></li>
+      </ul>
+    </div>
+
+    <div class="card card-s">
+      <div class="card-shine"></div>
+      <div class="card-header">
+        <div class="badge">S</div>
+        <div>
+          <div class="card-title">Social</div>
+          <div class="card-sub">Demographics &amp; culture</div>
+        </div>
+      </div>
+      <ul class="factors">
+        <li class="factor"><div class="factor-name">Ageing UK population</div><div class="factor-desc">Over-65s are the fastest-growing demographic, shifting demand and shrinking the workforce.</div></li>
+        <li class="factor"><div class="factor-name">Rise of ethical consumerism</div><div class="factor-desc">UK consumers increasingly choose sustainable or ethically sourced brands.</div></li>
+        <li class="factor"><div class="factor-name">Remote/hybrid work culture</div><div class="factor-desc">Reduced demand for office space and commuter services; changed employee expectations.</div></li>
+        <li class="factor"><div class="factor-name">Mental health awareness</div><div class="factor-desc">Growing pressure on employers to invest in staff wellbeing, increasing HR costs.</div></li>
+      </ul>
+    </div>
+
+    <div class="card card-t">
+      <div class="card-shine"></div>
+      <div class="card-header">
+        <div class="badge">T</div>
+        <div>
+          <div class="card-title">Technological</div>
+          <div class="card-sub">Innovation &amp; disruption</div>
+        </div>
+      </div>
+      <ul class="factors">
+        <li class="factor"><div class="factor-name">AI &amp; automation</div><div class="factor-desc">Cutting labour costs and improving efficiency, but threatening job displacement.</div></li>
+        <li class="factor"><div class="factor-name">Growth of e-commerce</div><div class="factor-desc">UK is one of Europe's largest online markets — businesses must adapt or lose share.</div></li>
+        <li class="factor"><div class="factor-name">Cybersecurity threats</div><div class="factor-desc">Rising data breaches expose businesses to UK GDPR fines and reputational damage.</div></li>
+        <li class="factor"><div class="factor-name">Cloud computing</div><div class="factor-desc">Lowers IT costs but creates dependency on third-party providers and connectivity.</div></li>
+      </ul>
+    </div>
+
+    <div class="card card-l">
+      <div class="card-shine"></div>
+      <div class="card-header">
+        <div class="badge">L</div>
+        <div>
+          <div class="card-title">Legal</div>
+          <div class="card-sub">Compliance &amp; legislation</div>
+        </div>
+      </div>
+      <ul class="factors">
+        <li class="factor"><div class="factor-name">UK GDPR</div><div class="factor-desc">Non-compliance risks fines up to £17.5m or 4% of annual global turnover.</div></li>
+        <li class="factor"><div class="factor-name">Employment law</div><div class="factor-desc">Unfair dismissal, redundancy pay and workers' rights are tightly regulated.</div></li>
+        <li class="factor"><div class="factor-name">Health &amp; Safety at Work Act 1974</div><div class="factor-desc">Legal duty of care to employees; breaches can result in prosecution and unlimited fines.</div></li>
+        <li class="factor"><div class="factor-name">Consumer Rights Act 2015</div><div class="factor-desc">Goods and services must be fit for purpose — creates liability for all UK businesses.</div></li>
+      </ul>
+    </div>
+
+    <div class="card card-env">
+      <div class="card-shine"></div>
+      <div class="card-header">
+        <div class="badge">E</div>
+        <div>
+          <div class="card-title">Environmental</div>
+          <div class="card-sub">Sustainability &amp; climate</div>
+        </div>
+      </div>
+      <ul class="factors">
+        <li class="factor"><div class="factor-name">UK Net Zero 2050 target</div><div class="factor-desc">Government pressure to cut emissions affects operations and reporting obligations.</div></li>
+        <li class="factor"><div class="factor-name">Energy costs</div><div class="factor-desc">UK energy prices spiked post-2022; remain a major overhead for most businesses.</div></li>
+        <li class="factor"><div class="factor-name">Plastic Packaging Tax</div><div class="factor-desc">£210.83 per tonne on packaging with under 30% recycled content, raising production costs.</div></li>
+        <li class="factor"><div class="factor-name">Extreme weather risk</div><div class="factor-desc">Flooding and heatwaves increasingly disrupt UK supply chains, premises and logistics.</div></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <footer>UK Generic PESTLE &nbsp;·&nbsp; All factors applicable across sectors</footer>
+
+</div>
+</body>
+</html>
