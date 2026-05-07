@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SWOT Analysis — UK Business</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Figtree',-apple-system,sans-serif;min-height:100vh;background:#000;color:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.bg{position:fixed;inset:0;z-index:0;background:#060608;overflow:hidden;pointer-events:none}
+.bg-orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.45;animation:drift linear infinite}
+.bg-orb-1{width:700px;height:700px;background:radial-gradient(circle,#3d2fa0,transparent 70%);top:-200px;left:-150px;animation-duration:28s}
+.bg-orb-2{width:600px;height:600px;background:radial-gradient(circle,#0a4fa6,transparent 70%);top:20%;right:-100px;animation-duration:22s;animation-delay:-8s}
+.bg-orb-3{width:500px;height:500px;background:radial-gradient(circle,#1a7a3a,transparent 70%);bottom:5%;left:20%;animation-duration:32s;animation-delay:-15s}
+.bg-orb-4{width:400px;height:400px;background:radial-gradient(circle,#7a1a4a,transparent 70%);bottom:20%;right:10%;animation-duration:26s;animation-delay:-4s}
+@keyframes drift{0%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-30px) scale(1.05)}66%{transform:translate(-20px,40px) scale(.97)}100%{transform:translate(0,0) scale(1)}}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:54px;display:flex;align-items:center;padding:0 28px;background:rgba(6,6,8,.7);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-logo{font-size:13px;font-weight:600;letter-spacing:-.02em;color:rgba(255,255,255,.9);text-decoration:none;flex-shrink:0}
+.nav-links{display:flex;align-items:center;gap:2px;margin-left:auto;list-style:none}
+.nav-links a{font-size:13px;font-weight:400;color:rgba(255,255,255,.45);text-decoration:none;padding:6px 13px;border-radius:8px;transition:color .2s,background .2s;white-space:nowrap}
+.nav-links a:hover{color:rgba(255,255,255,.9);background:rgba(255,255,255,.07)}
+.nav-links a.active{color:rgba(255,255,255,.9);background:rgba(255,255,255,.1)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;margin-left:auto;padding:6px;background:none;border:none}
+.hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,.7);border-radius:2px;transition:transform .3s ease,opacity .3s ease}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:54px;left:0;right:0;bottom:0;z-index:99;background:rgba(6,6,8,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);flex-direction:column;padding:32px 28px;border-top:1px solid rgba(255,255,255,.07)}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:22px;font-weight:400;color:rgba(255,255,255,.8);text-decoration:none;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.07);letter-spacing:-.03em;transition:color .2s}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu a.active{color:#5aadff}
+@media(max-width:680px){.nav-links{display:none}.hamburger{display:flex}}
+.page{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:110px 24px 100px}
+.page-header{text-align:center;margin-bottom:72px}
+.eyebrow{font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:18px}
+.page-title{font-size:clamp(42px,6vw,72px);font-weight:300;letter-spacing:-.04em;line-height:1;background:linear-gradient(160deg,#fff 30%,rgba(255,255,255,.45));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:20px}
+.subtitle{font-size:16px;font-weight:400;color:rgba(255,255,255,.45);max-width:440px;margin:0 auto;line-height:1.6;letter-spacing:.01em}
+.card{position:relative;border-radius:24px;padding:26px 24px 28px;background:rgba(255,255,255,.055);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,.1);overflow:hidden;transition:transform .3s cubic-bezier(.25,.8,.25,1),background .3s,border-color .3s}
+.card::before{content:'';position:absolute;inset:0;border-radius:24px;background:linear-gradient(135deg,rgba(255,255,255,.08) 0%,transparent 60%);pointer-events:none}
+.card:hover{transform:translateY(-4px) scale(1.005);background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18)}
+.card-shine{position:absolute;top:0;left:16px;right:16px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent)}
+.card-header{display:flex;align-items:center;gap:13px;margin-bottom:22px}
+.badge{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:600;flex-shrink:0;border:1px solid rgba(255,255,255,.15)}
+.card-title{font-size:15px;font-weight:600;color:rgba(255,255,255,.92);letter-spacing:-.02em}
+.card-sub{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:.03em;margin-top:2px}
+.factors{list-style:none;display:flex;flex-direction:column}
+.factor{padding:13px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.factor:last-child{border-bottom:none;padding-bottom:0}
+.factor:first-child{padding-top:0}
+.factor-name{font-size:12.5px;font-weight:500;color:rgba(255,255,255,.85);margin-bottom:4px;letter-spacing:-.01em}
+.factor-desc{font-size:11.5px;color:rgba(255,255,255,.38);line-height:1.55}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+@media(max-width:520px){.grid-2{grid-template-columns:1fr}}
+.page-footer{text-align:center;margin-top:60px;font-size:11px;letter-spacing:.06em;color:rgba(255,255,255,.2);text-transform:uppercase}
+.card-str .badge{background:rgba(52,199,89,.2);color:#5de087}
+.card-wk .badge{background:rgba(255,59,48,.2);color:#ff7b73}
+.card-opp .badge{background:rgba(0,122,255,.2);color:#5aadff}
+.card-thr .badge{background:rgba(255,159,10,.2);color:#ffbf52}
+</style>
+</head>
+<body>
+<div class="bg">
+  <div class="bg-orb bg-orb-1"></div><div class="bg-orb bg-orb-2"></div>
+  <div class="bg-orb bg-orb-3"></div><div class="bg-orb bg-orb-4"></div>
+</div>
+<nav>
+  <a class="nav-logo" href="index.html">📋 Exam Notes</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="swot.html">SWOT</a></li>
+    <li><a href="pestle.html">PESTLE</a></li>
+    <li><a href="headings.html">Headings</a></li>
+    <li><a href="template.html">Template</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html">Home</a>
+  <a href="swot.html">SWOT Analysis</a>
+  <a href="pestle.html">PESTLE Analysis</a>
+  <a href="headings.html">Exam Headings</a>
+  <a href="template.html">Template</a>
+</div>
+<div class="page">
+  <header class="page-header">
+    <p class="eyebrow">Business Analysis Framework</p>
+    <h1 class="page-title">SWOT Analysis</h1>
+    <p class="subtitle">Generic internal and external factors for UK businesses — applicable across all sectors.</p>
+  </header>
+  <div class="grid-2">
+    <div class="card card-str">
+      <div class="card-shine"></div>
+      <div class="card-header"><div class="badge">S</div><div><div class="card-title">Strengths</div><div class="card-sub">Internal positives</div></div></div>
+      <ul class="factors">
+        <li class="factor"><div class="factor-name">Established brand reputation</div><div class="factor-desc">UK consumers trust consistent brands — drives repeat custom, loyalty and word-of-mouth without extra spend.</div></li>
+        <li class="factor"><div class="factor-name">Skilled, diverse workforce</div><div class="factor-desc">The UK labour market is well-educated; businesses can draw on a wide range of specialisms across sectors.</div></li>
+        <li class="factor"><div class="factor-name">Strong digital infrastructure</div><div class="factor-desc">High broadband coverage and smartphone penetration let UK businesses operate and sell online efficiently.</div></li>
+        <li class="factor"><div class="factor-name">Customer loyalty base</div><div class="factor-desc">Repeat customers reduce acquisition costs and improve long-term revenue stability.</div></li>
+        <li class="factor"><div class="factor-name">Access to UK funding</div><div class="factor-desc">British Business Bank loans, government grants and investor funding provide capital for growth and expansion.</div></li>
+      </ul>
+    </div>
+    <div class="card card-wk">
+      <div class="card-shine"></div>
+      <div class="card-header"><div class="badge">W</div><div><div class="card-title">Weaknesses</div><div class="card-sub">Internal negatives</div></div></div>
+      <ul class="factors">
+        <li class="factor"><div class="factor-name">High operating costs</div><div class="factor-desc">National Living Wage, business rates and energy bills make UK cost bases significantly higher than many international competitors.</div></li>
+        <li class="factor"><div class="factor-name">Supplier dependency</div><div class="factor-desc">Over-reliance on single suppliers — particularly post-Brexit — creates vulnerability to price hikes and disruption.</div></li>
+        <li class="factor"><div class="factor-name">Limited marketing budget</div><div class="factor-desc">Smaller UK businesses often lack resources to compete with larger rivals on advertising reach and brand awareness.</div></li>
+        <li class="factor"><div class="factor-name">Skills gaps</div><div class="factor-desc">Post-Brexit reduction in EU labour supply has created shortages in hospitality, logistics, construction and social care.</div></li>
+        <li class="factor"><div class="factor-name">Slow technology adoption</div><div class="factor-desc">Many UK SMEs lag behind on automation and digital tools, reducing efficiency and competitiveness over time.</div></li>
+      </ul>
+    </div>
+    <div class="card card-opp">
+      <div class="card-shine"></div>
+      <div class="card-header"><div class="badge">O</div><div><div class="card-title">Opportunities</div><div class="card-sub">External positives</div></div></div>
+      <ul class="factors">
+        <li class="factor"><div class="factor-name">Growing e-commerce market</div><div class="factor-desc">The UK is one of Europe's biggest online retail markets — investing in digital channels can significantly grow reach.</div></li>
+        <li class="factor"><div class="factor-name">Green economy growth</div><div class="factor-desc">UK Net Zero commitments are driving demand for sustainable products — early movers gain competitive advantage.</div></li>
+        <li class="factor"><div class="factor-name">New trade agreements</div><div class="factor-desc">Post-Brexit UK is pursuing independent deals (e.g. CPTPP) that could open new export markets for UK businesses.</div></li>
+        <li class="factor"><div class="factor-name">AI and automation tools</div><div class="factor-desc">Affordable AI tools let smaller businesses automate tasks, cut costs and compete more effectively with larger rivals.</div></li>
+        <li class="factor"><div class="factor-name">Government business support</div><div class="factor-desc">Grants, R&amp;D tax credits and Innovate UK funding offer real financial opportunities, especially for startups and SMEs.</div></li>
+      </ul>
+    </div>
+    <div class="card card-thr">
+      <div class="card-shine"></div>
+      <div class="card-header"><div class="badge">T</div><div><div class="card-title">Threats</div><div class="card-sub">External negatives</div></div></div>
+      <ul class="factors">
+        <li class="factor"><div class="factor-name">Recession risk</div><div class="factor-desc">Slow UK GDP growth and high household debt could tip the economy into recession, cutting consumer spending sharply.</div></li>
+        <li class="factor"><div class="factor-name">Intense competition</div><div class="factor-desc">Multinationals and low-cost online rivals (Amazon, Shein, Temu) can undercut UK businesses on price and delivery speed.</div></li>
+        <li class="factor"><div class="factor-name">Regulatory changes</div><div class="factor-desc">Post-Brexit UK law diverging from EU standards — businesses trading with Europe face rising compliance complexity and cost.</div></li>
+        <li class="factor"><div class="factor-name">Cybersecurity threats</div><div class="factor-desc">Rising cyberattacks risk data breaches, operational disruption and heavy UK GDPR fines for businesses of all sizes.</div></li>
+        <li class="factor"><div class="factor-name">Shifting consumer behaviour</div><div class="factor-desc">Rapidly changing preferences around sustainability, value and digital mean businesses that don't adapt quickly lose share.</div></li>
+      </ul>
+    </div>
+  </div>
+  <footer class="page-footer">UK Generic SWOT Analysis &nbsp;·&nbsp; All factors applicable across sectors</footer>
+</div>
+<script>
+const hamburger=document.getElementById('hamburger');
+const mobileMenu=document.getElementById('mobile-menu');
+hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':''});
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hamburger.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow=''}));
+const cur=location.pathname.split('/').pop()||'index.html';
+document.querySelectorAll('.nav-links a,.mobile-menu a').forEach(a=>{if(a.getAttribute('href')===cur)a.classList.add('active')});
+</script>
+</body>
+</html>

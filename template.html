@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Template — Exam Notes</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Figtree',-apple-system,sans-serif;min-height:100vh;background:#000;color:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.bg{position:fixed;inset:0;z-index:0;background:#060608;overflow:hidden;pointer-events:none}
+.bg-orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.45;animation:drift linear infinite}
+.bg-orb-1{width:700px;height:700px;background:radial-gradient(circle,#3d2fa0,transparent 70%);top:-200px;left:-150px;animation-duration:28s}
+.bg-orb-2{width:600px;height:600px;background:radial-gradient(circle,#0a4fa6,transparent 70%);top:20%;right:-100px;animation-duration:22s;animation-delay:-8s}
+.bg-orb-3{width:500px;height:500px;background:radial-gradient(circle,#1a7a3a,transparent 70%);bottom:5%;left:20%;animation-duration:32s;animation-delay:-15s}
+.bg-orb-4{width:400px;height:400px;background:radial-gradient(circle,#7a1a4a,transparent 70%);bottom:20%;right:10%;animation-duration:26s;animation-delay:-4s}
+@keyframes drift{0%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-30px) scale(1.05)}66%{transform:translate(-20px,40px) scale(.97)}100%{transform:translate(0,0) scale(1)}}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:54px;display:flex;align-items:center;padding:0 28px;background:rgba(6,6,8,.7);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-logo{font-size:13px;font-weight:600;letter-spacing:-.02em;color:rgba(255,255,255,.9);text-decoration:none;flex-shrink:0}
+.nav-links{display:flex;align-items:center;gap:2px;margin-left:auto;list-style:none}
+.nav-links a{font-size:13px;font-weight:400;color:rgba(255,255,255,.45);text-decoration:none;padding:6px 13px;border-radius:8px;transition:color .2s,background .2s;white-space:nowrap}
+.nav-links a:hover{color:rgba(255,255,255,.9);background:rgba(255,255,255,.07)}
+.nav-links a.active{color:rgba(255,255,255,.9);background:rgba(255,255,255,.1)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;margin-left:auto;padding:6px;background:none;border:none}
+.hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,.7);border-radius:2px;transition:transform .3s ease,opacity .3s ease}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:54px;left:0;right:0;bottom:0;z-index:99;background:rgba(6,6,8,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);flex-direction:column;padding:32px 28px;border-top:1px solid rgba(255,255,255,.07)}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:22px;font-weight:400;color:rgba(255,255,255,.8);text-decoration:none;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.07);letter-spacing:-.03em;transition:color .2s}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu a.active{color:#5aadff}
+@media(max-width:680px){.nav-links{display:none}.hamburger{display:flex}}
+.page{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:110px 24px 100px}
+.page-header{text-align:center;margin-bottom:72px}
+.eyebrow{font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:18px}
+.page-title{font-size:clamp(42px,6vw,72px);font-weight:300;letter-spacing:-.04em;line-height:1;background:linear-gradient(160deg,#fff 30%,rgba(255,255,255,.45));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:20px}
+.subtitle{font-size:16px;font-weight:400;color:rgba(255,255,255,.45);max-width:440px;margin:0 auto;line-height:1.6}
+.page-footer{text-align:center;margin-top:60px;font-size:11px;letter-spacing:.06em;color:rgba(255,255,255,.2);text-transform:uppercase}
+/* Template specific */
+.template-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:960px;margin:0 auto}
+@media(max-width:620px){.template-grid{grid-template-columns:1fr}}
+.img-slot{position:relative;border-radius:24px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.055);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);overflow:hidden;transition:border-color .25s}
+.img-slot::before{content:'';position:absolute;inset:0;border-radius:24px;background:linear-gradient(135deg,rgba(255,255,255,.07) 0%,transparent 55%);pointer-events:none;z-index:1}
+.img-slot-shine{position:absolute;top:0;left:16px;right:16px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);z-index:2}
+.img-slot:hover{border-color:rgba(255,255,255,.18)}
+.img-ratio{position:relative;width:100%;padding-top:141.4%}
+.img-inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;z-index:2}
+.slot-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:24px 24px 0 0;display:none;z-index:0}
+.slot-img.loaded{display:block}
+.ph-icon{font-size:38px;opacity:.2}
+.ph-label{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.2)}
+.ph-hint{font-size:12px;color:rgba(255,255,255,.2)}
+.slot-controls{display:flex;gap:8px;align-items:center;padding:12px 14px;border-top:1px solid rgba(255,255,255,.07);position:relative;z-index:3}
+.path-input{flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:7px 11px;font-family:'Figtree',sans-serif;font-size:12px;color:rgba(255,255,255,.8);outline:none;transition:border-color .2s;min-width:0}
+.path-input::placeholder{color:rgba(255,255,255,.2)}
+.path-input:focus{border-color:rgba(0,122,255,.5)}
+.btn-upload{padding:7px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.06);color:rgba(255,255,255,.5);font-size:13px;cursor:pointer;transition:background .2s,color .2s;flex-shrink:0}
+.btn-upload:hover{background:rgba(255,255,255,.1);color:rgba(255,255,255,.85)}
+.btn-load{padding:7px 14px;border-radius:8px;border:1px solid rgba(0,122,255,.35);background:rgba(0,122,255,.15);color:#5aadff;font-family:'Figtree',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:background .2s,border-color .2s;flex-shrink:0;white-space:nowrap}
+.btn-load:hover{background:rgba(0,122,255,.25);border-color:rgba(0,122,255,.55)}
+.btn-clear{padding:7px 10px;border-radius:8px;border:1px solid rgba(255,255,255,.08);background:transparent;color:rgba(255,255,255,.25);font-family:'Figtree',sans-serif;font-size:12px;cursor:pointer;transition:background .2s,color .2s,border-color .2s;flex-shrink:0}
+.btn-clear:hover{background:rgba(255,59,48,.1);color:#ff7b73;border-color:rgba(255,59,48,.3)}
+.file-hidden{display:none}
+.template-note{text-align:center;font-size:12px;color:rgba(255,255,255,.2);margin-top:24px;max-width:960px;margin-left:auto;margin-right:auto}
+</style>
+</head>
+<body>
+<div class="bg">
+  <div class="bg-orb bg-orb-1"></div><div class="bg-orb bg-orb-2"></div>
+  <div class="bg-orb bg-orb-3"></div><div class="bg-orb bg-orb-4"></div>
+</div>
+<nav>
+  <a class="nav-logo" href="index.html">📋 Exam Notes</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="swot.html">SWOT</a></li>
+    <li><a href="pestle.html">PESTLE</a></li>
+    <li><a href="headings.html">Headings</a></li>
+    <li><a href="template.html">Template</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html">Home</a>
+  <a href="swot.html">SWOT Analysis</a>
+  <a href="pestle.html">PESTLE Analysis</a>
+  <a href="headings.html">Exam Headings</a>
+  <a href="template.html">Template</a>
+</div>
+<div class="page">
+  <header class="page-header">
+    <p class="eyebrow">Image Template</p>
+    <h1 class="page-title">Template</h1>
+    <p class="subtitle">Two A4-ratio slots. Paste a URL and hit Load, or click 📁 to pick a file from your PC.</p>
+  </header>
+  <div class="template-grid">
+    <div class="img-slot">
+      <div class="img-slot-shine"></div>
+      <div class="img-ratio">
+        <div class="img-inner" id="inner-1">
+          <img class="slot-img" id="img-1" alt="Image 1">
+          <div class="ph-icon" id="icon-1">🖼️</div>
+          <div class="ph-label" id="label-1">Image 1</div>
+          <div class="ph-hint" id="hint-1">URL or upload below</div>
+        </div>
+      </div>
+      <div class="slot-controls">
+        <input class="path-input" id="path-1" type="text" placeholder="https://...">
+        <button class="btn-upload" onclick="document.getElementById('file-1').click()">📁</button>
+        <input class="file-hidden" type="file" id="file-1" accept="image/*" onchange="loadFile(1,this)">
+        <button class="btn-load" onclick="loadUrl(1)">Load</button>
+        <button class="btn-clear" onclick="clearSlot(1)">✕</button>
+      </div>
+    </div>
+    <div class="img-slot">
+      <div class="img-slot-shine"></div>
+      <div class="img-ratio">
+        <div class="img-inner" id="inner-2">
+          <img class="slot-img" id="img-2" alt="Image 2">
+          <div class="ph-icon" id="icon-2">🖼️</div>
+          <div class="ph-label" id="label-2">Image 2</div>
+          <div class="ph-hint" id="hint-2">URL or upload below</div>
+        </div>
+      </div>
+      <div class="slot-controls">
+        <input class="path-input" id="path-2" type="text" placeholder="https://...">
+        <button class="btn-upload" onclick="document.getElementById('file-2').click()">📁</button>
+        <input class="file-hidden" type="file" id="file-2" accept="image/*" onchange="loadFile(2,this)">
+        <button class="btn-load" onclick="loadUrl(2)">Load</button>
+        <button class="btn-clear" onclick="clearSlot(2)">✕</button>
+      </div>
+    </div>
+  </div>
+  <p class="template-note">Images stay local to your browser — nothing is uploaded anywhere.</p>
+  <footer class="page-footer">Template &nbsp;·&nbsp; A4 ratio (1 : 1.414)</footer>
+</div>
+<script>
+const hamburger=document.getElementById('hamburger');
+const mobileMenu=document.getElementById('mobile-menu');
+hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':''});
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hamburger.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow=''}));
+const cur=location.pathname.split('/').pop()||'index.html';
+document.querySelectorAll('.nav-links a,.mobile-menu a').forEach(a=>{if(a.getAttribute('href')===cur)a.classList.add('active')});
+function showImg(slot,src){const img=document.getElementById('img-'+slot);img.src=src;img.classList.add('loaded');['icon','label','hint'].forEach(id=>{document.getElementById(id+'-'+slot).style.display='none'})}
+function loadUrl(slot){const url=document.getElementById('path-'+slot).value.trim();if(url)showImg(slot,url)}
+function loadFile(slot,input){const file=input.files[0];if(!file)return;const reader=new FileReader();reader.onload=e=>showImg(slot,e.target.result);reader.readAsDataURL(file)}
+function clearSlot(slot){const img=document.getElementById('img-'+slot);img.src='';img.classList.remove('loaded');['icon','label','hint'].forEach(id=>{document.getElementById(id+'-'+slot).style.display=''});document.getElementById('path-'+slot).value='';document.getElementById('file-'+slot).value=''}
+document.querySelectorAll('.path-input').forEach((input,i)=>{input.addEventListener('keydown',e=>{if(e.key==='Enter')loadUrl(i+1)})});
+</script>
+</body>
+</html>

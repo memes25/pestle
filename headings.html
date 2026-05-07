@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exam Headings — Business Studies</title>
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Figtree',-apple-system,sans-serif;min-height:100vh;background:#000;color:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.bg{position:fixed;inset:0;z-index:0;background:#060608;overflow:hidden;pointer-events:none}
+.bg-orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:.45;animation:drift linear infinite}
+.bg-orb-1{width:700px;height:700px;background:radial-gradient(circle,#3d2fa0,transparent 70%);top:-200px;left:-150px;animation-duration:28s}
+.bg-orb-2{width:600px;height:600px;background:radial-gradient(circle,#0a4fa6,transparent 70%);top:20%;right:-100px;animation-duration:22s;animation-delay:-8s}
+.bg-orb-3{width:500px;height:500px;background:radial-gradient(circle,#1a7a3a,transparent 70%);bottom:5%;left:20%;animation-duration:32s;animation-delay:-15s}
+.bg-orb-4{width:400px;height:400px;background:radial-gradient(circle,#7a1a4a,transparent 70%);bottom:20%;right:10%;animation-duration:26s;animation-delay:-4s}
+@keyframes drift{0%{transform:translate(0,0) scale(1)}33%{transform:translate(40px,-30px) scale(1.05)}66%{transform:translate(-20px,40px) scale(.97)}100%{transform:translate(0,0) scale(1)}}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:54px;display:flex;align-items:center;padding:0 28px;background:rgba(6,6,8,.7);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid rgba(255,255,255,.08)}
+.nav-logo{font-size:13px;font-weight:600;letter-spacing:-.02em;color:rgba(255,255,255,.9);text-decoration:none;flex-shrink:0}
+.nav-links{display:flex;align-items:center;gap:2px;margin-left:auto;list-style:none}
+.nav-links a{font-size:13px;font-weight:400;color:rgba(255,255,255,.45);text-decoration:none;padding:6px 13px;border-radius:8px;transition:color .2s,background .2s;white-space:nowrap}
+.nav-links a:hover{color:rgba(255,255,255,.9);background:rgba(255,255,255,.07)}
+.nav-links a.active{color:rgba(255,255,255,.9);background:rgba(255,255,255,.1)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;margin-left:auto;padding:6px;background:none;border:none}
+.hamburger span{display:block;width:22px;height:2px;background:rgba(255,255,255,.7);border-radius:2px;transition:transform .3s ease,opacity .3s ease}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;position:fixed;top:54px;left:0;right:0;bottom:0;z-index:99;background:rgba(6,6,8,.97);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);flex-direction:column;padding:32px 28px;border-top:1px solid rgba(255,255,255,.07)}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:22px;font-weight:400;color:rgba(255,255,255,.8);text-decoration:none;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.07);letter-spacing:-.03em;transition:color .2s}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu a.active{color:#5aadff}
+@media(max-width:680px){.nav-links{display:none}.hamburger{display:flex}}
+.page{position:relative;z-index:1;max-width:1120px;margin:0 auto;padding:110px 24px 100px}
+.page-header{text-align:center;margin-bottom:72px}
+.eyebrow{font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:18px}
+.page-title{font-size:clamp(42px,6vw,72px);font-weight:300;letter-spacing:-.04em;line-height:1;background:linear-gradient(160deg,#fff 30%,rgba(255,255,255,.45));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:20px}
+.subtitle{font-size:16px;font-weight:400;color:rgba(255,255,255,.45);max-width:440px;margin:0 auto;line-height:1.6}
+.page-footer{text-align:center;margin-top:60px;font-size:11px;letter-spacing:.06em;color:rgba(255,255,255,.2);text-transform:uppercase}
+/* Tabs */
+.tab-bar{display:flex;gap:8px;justify-content:center;margin-bottom:48px}
+.tab-btn{padding:9px 22px;border-radius:10px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:rgba(255,255,255,.45);font-family:'Figtree',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px)}
+.tab-btn:hover{background:rgba(255,255,255,.08);color:rgba(255,255,255,.85)}
+.tab-btn.active{background:rgba(0,122,255,.18);border-color:rgba(0,122,255,.4);color:#5aadff}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+/* Accordion */
+.acc-card{position:relative;border-radius:18px;background:rgba(255,255,255,.055);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,.1);overflow:hidden;margin-bottom:10px;transition:border-color .2s}
+.acc-card::before{content:'';position:absolute;inset:0;border-radius:18px;background:linear-gradient(135deg,rgba(255,255,255,.06) 0%,transparent 55%);pointer-events:none}
+.acc-card.open{border-color:rgba(255,255,255,.16)}
+.acc-top{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;user-select:none;gap:14px}
+.acc-left{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+.acc-num{width:28px;height:28px;border-radius:8px;background:rgba(0,122,255,.15);color:#5aadff;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.acc-name{font-size:14px;font-weight:600;color:rgba(255,255,255,.88);letter-spacing:-.01em}
+.acc-right{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.time-tag{font-size:10.5px;padding:3px 9px;border-radius:6px;background:rgba(255,159,10,.12);color:#ffbf52;font-weight:500;white-space:nowrap}
+.chevron{font-size:11px;color:rgba(255,255,255,.25);transition:transform .25s}
+.acc-card.open .chevron{transform:rotate(180deg)}
+.acc-body{display:none;padding:4px 20px 20px;border-top:1px solid rgba(255,255,255,.07)}
+.acc-card.open .acc-body{display:block}
+.acc-body ul{list-style:none;display:flex;flex-direction:column;gap:11px;margin-top:16px}
+.acc-body li{font-size:13px;color:rgba(255,255,255,.45);line-height:1.6;padding-left:18px;position:relative}
+.acc-body li::before{content:'→';position:absolute;left:0;color:rgba(255,255,255,.2);font-size:11px;top:2px}
+.acc-body li strong{color:rgba(255,255,255,.82);font-weight:500}
+.sub-section{margin-top:16px;padding-top:14px;border-top:1px solid rgba(255,255,255,.06)}
+.sub-label{font-size:10.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:4px}
+/* Cheat sheet */
+.cheat-intro{text-align:center;font-size:12.5px;color:rgba(255,255,255,.3);margin-bottom:28px}
+.cheat-block{position:relative;border-radius:20px;background:rgba(255,255,255,.055);backdrop-filter:blur(40px) saturate(180%);-webkit-backdrop-filter:blur(40px) saturate(180%);border:1px solid rgba(255,255,255,.1);padding:24px 26px;overflow:hidden;margin-bottom:12px}
+.cheat-block::before{content:'';position:absolute;inset:0;border-radius:20px;background:linear-gradient(135deg,rgba(255,255,255,.06) 0%,transparent 55%);pointer-events:none}
+.cheat-shine{position:absolute;top:0;left:16px;right:16px;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent)}
+.cheat-block-title{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.07)}
+.cheat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px 32px}
+@media(max-width:560px){.cheat-grid{grid-template-columns:1fr}}
+.cheat-row{padding:9px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.cheat-row:last-child{border-bottom:none}
+.cheat-heading{font-size:12px;font-weight:600;color:rgba(255,255,255,.82);letter-spacing:-.01em;margin-bottom:3px}
+.cheat-hint{font-size:11px;color:rgba(255,255,255,.35);line-height:1.5}
+.cheat-time{font-size:10px;color:#ffbf52;font-weight:500;margin-top:2px;opacity:.8}
+</style>
+</head>
+<body>
+<div class="bg">
+  <div class="bg-orb bg-orb-1"></div><div class="bg-orb bg-orb-2"></div>
+  <div class="bg-orb bg-orb-3"></div><div class="bg-orb bg-orb-4"></div>
+</div>
+<nav>
+  <a class="nav-logo" href="index.html">📋 Exam Notes</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="swot.html">SWOT</a></li>
+    <li><a href="pestle.html">PESTLE</a></li>
+    <li><a href="headings.html">Headings</a></li>
+    <li><a href="template.html">Template</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobile-menu">
+  <a href="index.html">Home</a>
+  <a href="swot.html">SWOT Analysis</a>
+  <a href="pestle.html">PESTLE Analysis</a>
+  <a href="headings.html">Exam Headings</a>
+  <a href="template.html">Template</a>
+</div>
+<div class="page">
+  <header class="page-header">
+    <p class="eyebrow">Marketing Campaign Exam</p>
+    <h1 class="page-title">Exam Headings</h1>
+    <p class="subtitle">Full reference guide for every heading, plus a condensed A4 cheat sheet.</p>
+  </header>
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="switchTab('full',this)">📖 Full Guide</button>
+    <button class="tab-btn" onclick="switchTab('cheat',this)">📄 A4 Cheat Sheet</button>
+  </div>
+
+  <!-- FULL GUIDE -->
+  <div class="tab-panel active" id="tab-full">
+
+    <div class="acc-card" onclick="toggleAcc(this)">
+      <div class="acc-top"><div class="acc-left"><div class="acc-num">1</div><div class="acc-name">Background</div></div><div class="acc-right"><span class="time-tag">⏱ 5 mins</span><span class="chevron">▼</span></div></div>
+      <div class="acc-body"><ul>
+        <li><strong>Who is the campaign for?</strong> — Name the business and describe what they do in one sentence.</li>
+        <li><strong>Why is it being conducted?</strong> — State the business problem or opportunity (e.g. falling sales, new product, new market).</li>
+        <li><strong>What does it hope to achieve?</strong> — Brief overview of the intended outcome (awareness, sales growth, image).</li>
+        <li><strong>State your Part B decision clearly</strong> — e.g. "I am following Decision A because..." Give a specific reason linked to case study data.</li>
+      </ul></div>
+    </div>
+
+    <div class="acc-card" onclick="toggleAcc(this)">
+      <div class="acc-top"><div class="acc-left"><div class="acc-num">2</div><div class="acc-name">Aims and Objectives</div></div><div class="acc-right"><span class="time-tag">⏱ 15 mins</span><span class="chevron">▼</span></div></div>
+      <div class="acc-body"><ul>
+        <li><strong>Aim</strong> — Write the main aim(s) directly from the case study. Broad and directional.</li>
+        <li><strong>Objective 1 (SMART)</strong> — Specific, Measurable, Achievable, Relevant, Time-bound. E.g. "To increase online sales by 15% within 6 months."</li>
+        <li><strong>Justify Obj 1</strong> — Why is it realistic? Link to case study data. How would it be achieved?</li>
+        <li><strong>Objective 2 (SMART)</strong> — A second distinct objective with time frame and measurable target.</li>
+        <li><strong>Justify Obj 2</strong> — Evidence + method of achievement.</li>
+      </ul></div>
+    </div>
+
+    <div class="acc-card" onclick="toggleAcc(this)">
+      <div class="acc-top"><div class="acc-left"><div class="acc-num">3</div><div class="acc-name">Research</div></div><div class="acc-right"><span class="time-tag">⏱ 20 mins</span><span class="chevron">▼</span></div></div>
+      <div class="acc-body">
+        <div class="sub-section" style="margin-top:8px;padding-top:0;border-top:none;"><div class="sub-label">Primary Research</div><ul>
+          <li><strong>Main findings</strong> — One solid paragraph. Use specific figures where given (e.g. "72% of respondents said...").</li>
+          <li><strong>Campaign impact</strong> — How do findings shape decisions about target market, message or channel?</li>
+          <li><strong>Evaluate it</strong> — Sample size (too small?), who was asked (right demographic?), where (appropriate?), how could it be improved?</li>
+        </ul></div>
+        <div class="sub-section"><div class="sub-label">Secondary — Trends &amp; Market Size</div><ul>
+          <li>Explain what the data shows. Growing or shrinking? Market size/value? Link to campaign opportunity.</li>
+        </ul></div>
+        <div class="sub-section"><div class="sub-label">Secondary — Competition Table</div><ul>
+          <li>Table comparing at least 2 competitors across the <strong>7Ps</strong>. What to copy or differentiate? How competitive? Growing? New entrants?</li>
+        </ul></div>
+        <div class="sub-section"><div class="sub-label">Validity</div><ul>
+          <li>How many sources? Trustworthy (official, academic, industry)? Recent (within 2–3 years)?</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <div class="acc-card" onclick="toggleAcc(this)">
+      <div class="acc-top"><div class="acc-left"><div class="acc-num">4</div><div class="acc-name">SWOT</div></div><div class="acc-right"><span class="time-tag">⏱ 15 mins</span><span class="chevron">▼</span></div></div>
+      <div class="acc-body"><ul>
+        <li><strong>Strengths</strong> — One paragraph. What does the business do well? Link to how it helps the campaign.</li>
+        <li><strong>Weaknesses</strong> — One paragraph. Internal limitations and how they hinder the campaign.</li>
+        <li><strong>Opportunities</strong> — One paragraph. External positives and how the campaign can exploit them.</li>
+        <li><strong>Threats</strong> — One paragraph. External risks and what needs planning for.</li>
+      </ul></div>
+    </div>
+
+    <div class="acc-card" onclick="toggleAcc(this)">
+      <div class="acc-top"><div class="acc-left"><div class="acc-num">5</div><div class="acc-name">PESTLE</div></div><div class="acc-right"><span class="time-tag">⏱ 15 mins</span><span class="chevron">▼</span></div></div>
+      <div class="acc-body"><ul>
+        <li>One short paragraph per letter (P / E / S / T / L / E).</li>
+        <li>Describe the factor, then always end: <strong>"this means that..."</strong> linking it to the campaign impact.</li>
+        <li>Use the PESTLE page on this site for specific UK factors to draw from.</li>
+      </ul></div>
+    </div>
+
+    <div class="acc-card" onclick="toggleAcc(this)">
+      <div class="acc-top"><div class="acc-left"><div class="acc-num">6</div><div class="acc-name">Summary</div></div><div class="acc-right"><span class="time-tag">⏱ 5 mins</span><span class="chevron">▼</span></div></div>
+      <div class="acc-body"><ul>
+        <li>Pull out <strong>3–5 key points</strong> from research, SWOT and PESTLE that will directly help or hinder the campaign.</li>
+        <li>Keep it brief — a signpost into the plan, not a repeat of everything above.</li>
+      </ul></div>
+    </div>
+
+    <div class="acc-card" onclick="toggleAcc(this)">
+      <div class="acc-top"><div class="acc-left"><div class="acc-num">7</div><div class="acc-name">Marketing Message</div></div><div class="acc-right"><span class="time-tag">⏱ 2 mins</span><span class="chevron">▼</span></div></div>
+      <div class="acc-body"><ul>
+        <li>What is the business telling the customer? State the core message — what should customers think, feel or do?</li>
+        <li>1–2 sentences. Simple, memorable, consistent with the USP.</li>
+        <li>E.g. <em>"We offer affordable, sustainable products that never compromise on quality."</em></li>
+      </ul></div>
+    </div>
+
+    <div class="acc-card" onclick="toggleAcc(this)">
+      <div class="acc-top"><div class="acc-left"><div class="acc-num">8</div><div class="acc-name">Target Market</div></div><div class="acc-right"><span class="time-tag">⏱ 5 mins</span><span class="chevron">▼</span></div></div>
+      <div class="acc-body"><ul>
+        <li><strong>Demographic</strong> — Age, gender, income, occupation, family status.</li>
+        <li><strong>Geographic</strong> — Location, urban/rural, regional focus.</li>
+        <li><strong>Psychographic</strong> — Lifestyle, values, interests, personality.</li>
+        <li><strong>Behavioural</strong> — Buying habits, brand loyalty, usage rate, occasion.</li>
+      </ul></div>
+    </div>
+
+    <div class="acc-card" onclick="toggleAcc(this)">
+      <div class="acc-top"><div class="acc-left"><div class="acc-num">9</div><div class="acc-name">Marketing Mix — 7Ps</div></div><div class="acc-right"><span class="time-tag">⏱ 45 mins</span><span class="chevron">▼</span></div></div>
+      <div class="acc-body">
+        <div class="sub-section" style="margin-top:8px;padding-top:0;border-top:none;"><div class="sub-label">Product</div><ul><li>Range, quality, ingredients/contents, packaging, <strong>USP</strong> — what makes it unique vs competitors?</li></ul></div>
+        <div class="sub-section"><div class="sub-label">Price</div><ul><li>Choose a strategy: <strong>Skimming</strong> (high, niche/luxury), <strong>Penetration</strong> (low to gain share), <strong>Competition-based</strong> (match rivals), <strong>Discriminatory</strong> (different prices for groups), <strong>Psychological</strong> (£9.99), <strong>Cost-plus</strong> (cost + margin). Link to competitor pricing and target market income.</li></ul></div>
+        <div class="sub-section"><div class="sub-label">Place</div><ul><li>Where sold? Physical, online, third-party, app? Distribution: direct, wholesale, franchise, digital?</li></ul></div>
+        <div class="sub-section"><div class="sub-label">Process</div><ul><li>Order journey, delivery, payment methods (card, PayPal, BNPL), after-sales, returns, email sign-up, account registration.</li></ul></div>
+        <div class="sub-section"><div class="sub-label">Physical Evidence</div><ul><li>Website — content, ease of use, mobile-friendly. In-store: layout, signage, branding consistency.</li></ul></div>
+        <div class="sub-section"><div class="sub-label">People</div><ul><li>Staff type, how used, training, uniforms, tone of communication.</li></ul></div>
+        <div class="sub-section"><div class="sub-label">Promotion</div><ul><li>Methods from Part B decision — <strong>justify each one</strong>. How does each carry the marketing message? Link every choice to the target market.</li></ul></div>
+      </div>
+    </div>
+
+    <div class="acc-card" onclick="toggleAcc(this)">
+      <div class="acc-top"><div class="acc-left"><div class="acc-num">10</div><div class="acc-name">Budget</div></div><div class="acc-right"><span class="time-tag">⏱ 15 mins</span><span class="chevron">▼</span></div></div>
+      <div class="acc-body"><ul>
+        <li>List each media form with cost breakdown. Use the case study budget — <strong>do not exceed it</strong>.</li>
+        <li>For each: how used, why chosen, cost, expected return.</li>
+        <li>Table format: <strong>Media | How Used | Cost | Justification</strong>.</li>
+      </ul></div>
+    </div>
+
+    <div class="acc-card" onclick="toggleAcc(this)">
+      <div class="acc-top"><div class="acc-left"><div class="acc-num">11</div><div class="acc-name">Timescale</div></div><div class="acc-right"><span class="time-tag">⏱ 10 mins</span><span class="chevron">▼</span></div></div>
+      <div class="acc-body"><ul>
+        <li><strong>Something must run every single month</strong> — no gaps in the campaign period.</li>
+        <li>For each month: activity, channel, how it reaches the target market.</li>
+        <li>Link each month back to the overall aims and SMART objectives.</li>
+        <li>Table format: <strong>Month | Activity | Channel | How it reaches target market</strong>.</li>
+      </ul></div>
+    </div>
+
+    <div class="acc-card" onclick="toggleAcc(this)">
+      <div class="acc-top"><div class="acc-left"><div class="acc-num">12</div><div class="acc-name">Conclusion</div></div><div class="acc-right"><span class="time-tag">⏱ 5 mins</span><span class="chevron">▼</span></div></div>
+      <div class="acc-body"><ul>
+        <li><strong>Why will it succeed?</strong> — Refer to SMART objectives, research findings and the marketing mix.</li>
+        <li><strong>How measured?</strong> — Sales figures, social metrics, website traffic, customer surveys.</li>
+        <li><strong>When?</strong> — Mid-campaign review (e.g. 3 months) + full review at campaign end.</li>
+      </ul></div>
+    </div>
+
+  </div>
+
+  <!-- CHEAT SHEET -->
+  <div class="tab-panel" id="tab-cheat">
+    <p class="cheat-intro">Condensed for copying onto half an A4 at font size 10 — nothing missed, nothing padded.</p>
+
+    <div class="cheat-block">
+      <div class="cheat-shine"></div>
+      <div class="cheat-block-title">Section 1 — Context &amp; Research</div>
+      <div class="cheat-grid">
+        <div>
+          <div class="cheat-row"><div class="cheat-heading">1. Background</div><div class="cheat-hint">Who/why/what. State Part B decision + clear reason.</div><div class="cheat-time">5 mins</div></div>
+          <div class="cheat-row"><div class="cheat-heading">2. Aims &amp; Objectives</div><div class="cheat-hint">Main aim from case study. 2× SMART objectives — justify each with evidence + method.</div><div class="cheat-time">15 mins</div></div>
+          <div class="cheat-row"><div class="cheat-heading">3a. Primary Research</div><div class="cheat-hint">1 para: findings → campaign impact → evaluate (sample size, who, where, better?).</div><div class="cheat-time">10 mins</div></div>
+        </div>
+        <div>
+          <div class="cheat-row"><div class="cheat-heading">3b. Secondary — Trends</div><div class="cheat-hint">Explain data, market size, growth. Campaign impact.</div></div>
+          <div class="cheat-row"><div class="cheat-heading">3c. Competition Table</div><div class="cheat-hint">2+ competitors × 7Ps. Copy/differ? How competitive? Growing? New entrants?</div><div class="cheat-time">10 mins</div></div>
+          <div class="cheat-row"><div class="cheat-heading">3d. Validity</div><div class="cheat-hint">No. of sources, trustworthy? Recent?</div><div class="cheat-time">2 mins</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cheat-block">
+      <div class="cheat-shine"></div>
+      <div class="cheat-block-title">Section 2 — Analysis</div>
+      <div class="cheat-grid">
+        <div>
+          <div class="cheat-row"><div class="cheat-heading">4. SWOT</div><div class="cheat-hint">1 para each (S/W/O/T). Every paragraph must link to campaign impact.</div><div class="cheat-time">15 mins</div></div>
+          <div class="cheat-row"><div class="cheat-heading">5. PESTLE</div><div class="cheat-hint">1 short para per letter. Always end: "this means that..." for the campaign.</div><div class="cheat-time">15 mins</div></div>
+        </div>
+        <div>
+          <div class="cheat-row"><div class="cheat-heading">6. Summary</div><div class="cheat-hint">3–5 key points that help or hinder the campaign.</div><div class="cheat-time">5 mins</div></div>
+          <div class="cheat-row"><div class="cheat-heading">7. Marketing Message</div><div class="cheat-hint">1–2 sentences. What is the business telling the customer?</div><div class="cheat-time">2 mins</div></div>
+          <div class="cheat-row"><div class="cheat-heading">8. Target Market</div><div class="cheat-hint">All 4 segments: Demographic / Geographic / Psychographic / Behavioural.</div><div class="cheat-time">5 mins</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cheat-block">
+      <div class="cheat-shine"></div>
+      <div class="cheat-block-title">Section 3 — The Plan (7Ps — 45 mins total)</div>
+      <div class="cheat-grid">
+        <div>
+          <div class="cheat-row"><div class="cheat-heading">9a. Product</div><div class="cheat-hint">Range, quality, contents, packaging, USP.</div></div>
+          <div class="cheat-row"><div class="cheat-heading">9b. Price</div><div class="cheat-hint">Strategy: skimming / penetration / competition-based / discriminatory / psychological / cost-plus. Link to competitors + target market.</div></div>
+          <div class="cheat-row"><div class="cheat-heading">9c. Place</div><div class="cheat-hint">Where sold. Distribution channels (direct / wholesale / digital).</div></div>
+          <div class="cheat-row"><div class="cheat-heading">9d. Process</div><div class="cheat-hint">Order journey, delivery, payment, after-sales, email sign-up.</div></div>
+        </div>
+        <div>
+          <div class="cheat-row"><div class="cheat-heading">9e. Physical Evidence</div><div class="cheat-hint">Website content, ease of use, mobile. In-store layout and branding.</div></div>
+          <div class="cheat-row"><div class="cheat-heading">9f. People</div><div class="cheat-hint">Staff type, how used, training, tone.</div></div>
+          <div class="cheat-row"><div class="cheat-heading">9g. Promotion</div><div class="cheat-hint">Part B methods — justify each. How does each carry the message? Link to target market.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cheat-block">
+      <div class="cheat-shine"></div>
+      <div class="cheat-block-title">Section 4 — Wrap Up</div>
+      <div class="cheat-grid">
+        <div>
+          <div class="cheat-row"><div class="cheat-heading">10. Budget</div><div class="cheat-hint">Table: Media | Use | Cost | Justification. Total = case study budget. Don't exceed.</div><div class="cheat-time">15 mins</div></div>
+        </div>
+        <div>
+          <div class="cheat-row"><div class="cheat-heading">11. Timescale</div><div class="cheat-hint">Something every month. Table: Month | Activity | Channel | How reaches target. Link to aims.</div><div class="cheat-time">10 mins</div></div>
+          <div class="cheat-row"><div class="cheat-heading">12. Conclusion</div><div class="cheat-hint">Why successful → link to objectives. How measured (sales, social, traffic)? When (mid + end review).</div><div class="cheat-time">5 mins</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="page-footer">Marketing Campaign Exam &nbsp;·&nbsp; All headings &amp; timings included</footer>
+</div>
+<script>
+const hamburger=document.getElementById('hamburger');
+const mobileMenu=document.getElementById('mobile-menu');
+hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':''});
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{hamburger.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow=''}));
+const cur=location.pathname.split('/').pop()||'index.html';
+document.querySelectorAll('.nav-links a,.mobile-menu a').forEach(a=>{if(a.getAttribute('href')===cur)a.classList.add('active')});
+function toggleAcc(card){card.classList.toggle('open')}
+function switchTab(id,btn){document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));document.getElementById('tab-'+id).classList.add('active');btn.classList.add('active')}
+</script>
+</body>
+</html>
